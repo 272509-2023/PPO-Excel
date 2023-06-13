@@ -3,13 +3,13 @@
 #include "sheet.h"
 using namespace std;
 int main() {
-    string test;
+    string size;
     do{
         cout<<"Podaj rozmiar tabeli"<<endl;
-        cin>>test;
-    }while(test!="tak" && test!="nie");
+        cin>>size;
+    }while(size!="tak" && size!="nie");
     int row=1, column=5;
-    if(test=="tak"){
+    if(size=="tak"){
     do{
         cout<<"ile wierszy ma moeć tabela"<<endl;
         cin>>row;
@@ -40,7 +40,7 @@ int main() {
         }while(operation<0 || operation>8);
         switch (operation) {
             case 1:
-            dodajdoExcela();
+
             break;
             case 2:
                 exel.resizeColumn();

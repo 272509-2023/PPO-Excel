@@ -22,7 +22,7 @@ cell_float::cell_float() {
     word="";
 }
 
-int cell_float::cell_float(float _number){
+cell_float::cell_float(float _number){
     number=_number;
 }
 int cell_float::idCell() {
