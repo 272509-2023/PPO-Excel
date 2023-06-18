@@ -9,22 +9,18 @@
 float cell_float::getFloat() {
     return 0;
 }
-string cell_float::getStr() {
+string cell_float::getString() {
     return word;
 }
-void cell_float::setFloat(float _number) {
+void cell_float::setFloat(float _number) {}
 
-}
-void cell_float::setStr(string _word) {
-    word=_word;
+void cell_float::setString(string word) {
+    this->word=word;
 }
 cell_float::cell_float() {
-    word="";
+    type = 1;
 }
 
 cell_float::cell_float(float _number){
     number=_number;
-}
-int cell_float::idCell() {
-    return 1;
 }

@@ -19,12 +19,16 @@ private:
 public:
     sheet();
     sheet(int row,int column);
-    void setCell(int row, int column, cell *add);
+    ~sheet();
+    void setCell(int row, int column, float n);
+    void setCell(int row, int column, string s);
     int getSizeofRow();
     int getSizeofCollumn();
     void resizeRow();
     void resizeColumn();
     void printSheet();
+    float sumCells(int start, int end, int amongus, bool direction);
+    float averageCells(int start, int end, int amongus, bool direction);
 
 
 };

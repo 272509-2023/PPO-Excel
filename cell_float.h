@@ -8,18 +8,14 @@
 #include <string>
 #include "cell_interface.h"
 
-class cell_float {
-private:
-    float number;
-    string word;
+class cell_float : public cell {
 public:
     cell_float();
     cell_float(float _number);
     float getFloat();
-    string getStr();
-    void setStr(string _word);
+    string getString();
+    void setString(string _word);
     void setFloat(float _number);
-    int idCell();
 
 };
 

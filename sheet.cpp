@@ -10,21 +10,21 @@
 using namespace std;
 
 sheet::sheet(){
-    vector <cell*> test_row;
+    vector<cell*> size_row;
         for(int i=0;i<5;i++){
-            cell_float*add=new cell_float;
-            test_row.push_back(add);
+            cell* add = new cell_float();
+            size_row.push_back(add);
         }
-        excel.push_back(test_row);
+        excel.push_back(size_row);
 }
 sheet::sheet(int row,int column) {
-    vector<cell *> test_row;
+    vector<cell *> size_row;
     for (int i = 0; i < column; i++) {
-        cell_float *add = new cell_float;
-        test_row.push_back(add);
+        cell *add = new cell_float();
+        size_row.push_back(add);
     }
     for (int i = 0; i < row; i++) {
-        excel.push_back(test_row);
+        excel.push_back(size_row);
     }
 }
 int sheet::getSizeofCollumn() {
@@ -35,23 +35,29 @@ int sheet::getSizeofRow() {
 }
 
 void sheet::resizeColumn() {
-    cell_float *test= new cell_float();
     for(int i=0;i<excel.size();i++){
-        excel[i].push_back(test);
+        cell_float *size= new cell_float();
+        excel[i].push_back(size);
     }
-
 }
+
 void sheet::resizeRow() {
-    vector <cell*> test_row;
+    vector <cell*> size_row;
     for(int i=0;i<excel[0].size();i++){
         cell_float *add=new cell_float;
-        test_row.push_back(add);
+        size_row.push_back(add);
     }
-    excel.push_back(test_row);
+    excel.push_back(size_row);
 }
-void sheet::setCell(int row, int column, cell *add) {
-    excel[row][column]=add;
+
+void sheet::setCell(int row, int column, float n) {
+    excel[row][column]->setField(n);
 }
+
+void sheet::setCell(int row, int column, string s) {
+    excel[row][column]->setField(s);
+}
+
 void sheet::printSheet() {
     for(int j=0;j<excel.size();j++){
         for(int i=0;i<excel[j].size();i++){
@@ -65,3 +71,30 @@ void sheet::printSheet() {
     }
 }
 
+sheet::~sheet() {
+    for(vector<cell*> v : excel) {
+        for(cell* c : v) {
+            delete c;
+        }
+    }
+}
+
+float sheet::sumCells(int start, int end, int amongus, bool direction) {
+    float sum = 0.0;
+    if(direction)  { //rows
+        for(; start <= end; start++) {
+            sum += excel[start][amongus]->getFloat();
+        }
+    } else {
+        for(; start <= end; start++) {
+            sum += excel[amongus][start]->getFloat();
+        }
+    }
+    return sum;
+}
+
+float sheet::averageCells(int start, int end, int amongus, bool direction) {
+    int number_of_cells = end - start;
+    return sumCells(start, end, amongus, direction) / number_of_cells;
+
+}

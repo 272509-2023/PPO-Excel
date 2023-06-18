@@ -20,7 +20,6 @@ void cell_str::setString(string _word) {
     word=_word;
 }
 cell_str::cell_str() {
-    word="";
 }
 cell_str::cell_str(string _word){
     word=_word;

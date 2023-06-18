@@ -9,10 +9,7 @@
 #include "cell_interface.h"
 
 
-class cell_str {
-private:
-    string word;
-    float number;
+class cell_str : public cell {
 public:
     cell_str();
     cell_str(string _word);
