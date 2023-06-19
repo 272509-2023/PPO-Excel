@@ -40,7 +40,7 @@ int main() {
         switch (operation) {
             case 1: {
                 int row, column, number_to_set;
-                cout << "user stuff"; // ewentualnie dodaj tego if-a
+                cout << "user stuff"; 
                 cin >> row >> column >> number_to_set;
                 exel.setCell(row, column, number_to_set);
                 break;
