@@ -8,18 +8,18 @@
 
 #include <string>
 using namespace std;
-
-class cell{
+//interface
+class cellInterface{
 protected:
     int type;
     float number;
     string word;
 public:
-    cell();
-    virtual float getFloat() = 0;
-    virtual string getString() = 0;
-    void setField(float f);
-    void setField(string s);
-    int idCell();
+    virtual ~cellInterface() {}
+    virtual float getFloat() const = 0;
+    virtual string getString() const = 0;
+    virtual void setField(float f) = 0;
+    virtual void setField(string s) = 0;
+    virtual int getType() const = 0;
 };
 #endif //ARKUSZKALKULACYJNYPROJEKT_CELL_INTERFACE_H

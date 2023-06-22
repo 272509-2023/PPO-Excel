@@ -7,28 +7,26 @@
 #pragma once
 #include<string>
 #include<vector>
-#include "cell_float.h"
-#include "cell_str.h"
-#include "cell_interface.h"
+#include "cell.h"
 
 using namespace std;
 
 class sheet {
 private:
-    vector<vector<cell*>> excel;
+    vector<vector<cell>> excel;
 public:
     sheet();
     sheet(int row,int column);
     ~sheet();
     void setCell(int row, int column, float n);
     void setCell(int row, int column, string s);
-    int getSizeofRow();
-    int getSizeofCollumn();
     void resizeRow();
     void resizeColumn();
     void printSheet();
     float sumCells(int start, int end, int amongus, bool direction);
     float averageCells(int start, int end, int amongus, bool direction);
+    void saveToFile(string filename);
+    void loadFromFile(string filename);
 
 
 };

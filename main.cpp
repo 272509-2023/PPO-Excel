@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     string size;
     do{
-        cout<<"Podaj rozmiar tabeli"<<endl;
+        cout<<"czy chcesz tabele"<<endl;
         cin>>size;
     }while(size!="tak" && size!="nie");
     int row=1, column=5;
@@ -39,10 +39,23 @@ int main() {
         cin >> operation;
         switch (operation) {
             case 1: {
-                int row, column, number_to_set;
-                cout << "user stuff"; 
-                cin >> row >> column >> number_to_set;
-                exel.setCell(row, column, number_to_set);
+                int row, column;
+                float number_to_set;
+                bool type;
+                string string_to_set;
+                cout << "enter row and column\n";
+                cin >> row >> column;
+                cout << "enter type of variable\n";
+                cin >> type;
+                if(type) {
+                    cout << "enter float number\n";
+                    cin >> number_to_set;
+                    exel.setCell(row, column, number_to_set);
+                } else {
+                    cout << "enter string\n";
+                    cin >> string_to_set;
+                    exel.setCell(row, column, string_to_set);
+                }
                 break;
             }
             case 2: {
@@ -58,18 +71,28 @@ int main() {
             break;
             }
             case 5: {
-                int startv, endv, amongus;
+                int start, end, amongus;
                 bool direction;
-                exel.sumCells(startv, endv, amongus, direction);
+                cin >> start >> end >> amongus >> direction;
+                cout << exel.sumCells(start, end, amongus, direction) << "\n";
                 break;
             }
             case 6: {
-                int startv, endv, amongus;
+                int start, end, amongus;
                 bool direction;
-                exel.averageCells(startv, endv, amongus, direction);
+                cin >> start >> end >> amongus >> direction;
+                cout << exel.averageCells(start, end, amongus, direction) << "\n";
                 break;
             }
-            case 0: {cont = false;}
+            case 7: {
+                exel.loadFromFile("db");
+                break;
+            }
+            case 8: {
+                exel.saveToFile("db");
+                break;
+            }
+            case 0: {cont = false; break;}
             default: {cout << "zla operacja"; break;}
         }
     }
